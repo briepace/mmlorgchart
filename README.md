@@ -21,7 +21,7 @@ Example
    * name - String denoting the name of the person the node represents
    * super - Integer denoting the id of the supervisor of the person the node represents
 
-Use the data() function to initialize your nodes:
+   Use the data() function to initialize your nodes:
 
         chart.data([{id:1,
         				title:"Provost and Executive Vice President",
