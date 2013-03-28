@@ -81,7 +81,7 @@
 				if(m_data[d].cssStyle == undefined || m_data[d].cssStyle == null)
 					m_data[d].cssStyle = '';
 
-				m_parsedData = $.extend(m_parsedData, $.parseJSON("{\"" + id + "\":\"hey\"}"));
+				m_parsedData = $.extend(m_parsedData, $.parseJSON("{\"" + id + "\":\"placeholder\"}"));
 				m_parsedData[id] = m_data[d];
 			}
 
@@ -131,7 +131,7 @@
 			drawConnection(m_root);
 
 			var container_height = parseInt(m_elem.height());
-			console.log(m_elem.height() + ':' + container_height);
+
 			for(var i in m_drawnNodes) {
 				var node = $('#mmloc_'+m_elem.attr('id')+'_'+m_drawnNodes[i]);
 				if((parseInt(node.css('top').replace('px','')) + node.height()) > container_height)
@@ -239,7 +239,7 @@
 				var id = 'mmloc_'+m_elem.attr('id')+'_' + node.id;
 				var node_classes = (node.cssClass == '' ? m_nodeClass : (m_nodeClass+' '+node.cssClass));
 				if(node.children != undefined && node.children != null && node.children.length > 0) {
-					var node_style = node.cssStyle + ' ' + m_parentStyle;
+					var node_style = m_parentStyle + ' ' + node.cssStyle;
 				} else {
 					var node_style = node.cssStyle;
 				}
@@ -267,73 +267,7 @@
 				elem.css('left', posLeft);
 
 				m_levelPositions[depth] = posLeft + width + 2*m_edgeSpacing;
-				/*
-				for(var i = depth + 1; i <= m_maxTreeDepth; i++) {
-					if(m_levelPositions[i] == undefined || m_levelPositions[i] == null || m_levelPositions[i] < m_levelPositions[depth])
-						m_levelPositions[i] = m_levelPositions[depth];
-				}
-				*/
-			}/* else { 
-				// Node and siblings are childless and will be drawn vertically.
-				var parent = node.parent;
-				for(var i in parent.children) {
-					var child = parent.children[i];
-
-					child.vertical = true;
-					var node_classes = (child.cssClass == '' ? m_nodeClass : (m_nodeClass+' '+child.cssClass));
-					var node_style = (child.cssStyle == '' ? '' : (' style="'+child.cssStyle+'" '));
-					var str = '<div id="mmloc_'+m_elem.attr('id')+'_'+child.id+'" class="' + node_classes + '"' + node_style + '>' +
-							'<p style="' + m_titleStyle + '">' + child.title.replace(/ /g, '&nbsp;') + '</p>' +
-							child.name.replace(/ /g, '&nbsp;') + '</div>';
-					m_elem.append(str);
-					m_drawnNodes.push(child.id);
-				}
-
-				// Get max width among children.
-				var width = 0;
-				for(var i in parent.children) {
-					var child = parent.children[i];
-					var elem = $('#mmloc_'+m_elem.attr('id')+'_'+child.id);
-
-					elem.css('float','left');
-					var tempWidth = elem.width();
-					if(tempWidth > width)
-						width = tempWidth;
-				}
-
-				var posLeft = 0;
-				for(var k = depth; k < depth+parent.children.length; k++) {
-					if(m_levelPositions[k] == undefined || m_levelPositions[k] == null) {
-						m_levelPositions[k] = m_edgeSpacing + m_verticalSpacing;
-						tempPosLeft = m_edgeSpacing + m_verticalSpacing;
-					}
-					else
-						tempPosLeft = m_levelPositions[k] + m_verticalSpacing;
-					if(tempPosLeft > posLeft)
-						posLeft = tempPosLeft;
-				}
-				
-				var curDepth = depth;
-				for(var i in parent.children) {
-					var child = parent.children[i];
-					var elem = $('#mmloc_'+m_elem.attr('id')+'_'+child.id);
-
-					elem.css('float','left');
-					elem.width(width);
-					var posTop = curDepth * m_levelHeight + m_edgeSpacing;
-					elem.css('float', '');
-					elem.css('position','absolute');
-					elem.css('top', posTop);
-					elem.css('left', posLeft);
-					m_levelPositions[curDepth] = posLeft + width + 2*m_edgeSpacing;
-
-					if(m_levelNodes[curDepth] == undefined || m_levelNodes[curDepth] == null)
-						m_levelNodes[curDepth] = new Array();
-
-					m_levelNodes[curDepth].push(child);
-					curDepth += 1;
-				}
-			}*/
+			}
 		};
 
 		var drawConnection = function(node) {
@@ -504,25 +438,6 @@
 
 			return true;
 		};
-
-		if(debug) {
-			this.getLevelNodes = function() {
-				return m_levelNodes;
-			}
-			this.getMaxTreeDepth = function() {
-				return m_maxTreeDepth;
-			}
-			this.getElement = function() {
-				return m_elem;
-			};
-			this.getTrees = function() {
-				return m_root;
-			};
-
-			this.getData = function() {
-				return m_data;
-			};
-		}
 	};
 
 	$.fn.MMLOrgChart = function(options) {
