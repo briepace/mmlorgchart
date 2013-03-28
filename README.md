@@ -16,12 +16,12 @@ Example
 
 3. MMLOrgChart uses an array of JSON objects that describe each node in the orgchart.  Each node needs an id, title, name, and super property.  
 
-    * id - Unique integer representing the node
-    * title - String denoting the title of the person the node represents
-    * name - String denoting the name of the person the node represents
-    * super - Integer denoting the id of the supervisor of the person the node represents
+   * id - Unique integer representing the node
+   * title - String denoting the title of the person the node represents
+   * name - String denoting the name of the person the node represents
+   * super - Integer denoting the id of the supervisor of the person the node represents
 
-    Use the data() function to initialize your nodes:
+Use the data() function to initialize your nodes:
 
         chart.data([{id:1,
         				title:"Provost and Executive Vice President",
@@ -54,7 +54,7 @@ Example
         				name:"Patricia Matthes (Interim)",
         				super:2}]);
 
-    As you can see in nodes 1 and 2, you can customize the css of individual nodes using the cssStyle property.  There is also a cssClass property if you wish to change the style of multiple nodes.
+As you can see in nodes 1 and 2, you can customize the css of individual nodes using the cssStyle property.  There is also a cssClass property if you wish to change the style of multiple nodes.
 
 4. All that's left to do is draw the orgchart. This is done with the render() function.
 
