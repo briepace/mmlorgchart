@@ -15,7 +15,6 @@ Example
         var chart = $('#example').MMLOrgChart();
 
 3. MMLOrgChart uses an array of JSON objects that describe each node in the orgchart.  Each node needs an id, title, name, and super property.  
-
    * id - Unique integer representing the node
    * title - String denoting the title of the person the node represents
    * name - String denoting the name of the person the node represents
