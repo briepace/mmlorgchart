@@ -54,7 +54,7 @@ Example
         				name:"Patricia Matthes (Interim)",
         				super:2}]);
 
-As you can see in nodes 1 and 2, you can customize the css of individual nodes using the cssStyle property.  There is also a cssClass property if you wish to change the style of multiple nodes.
+   As you can see in nodes 1 and 2, you can customize the css of individual nodes using the cssStyle property.  There is also a cssClass property if you wish to change the style of multiple nodes.
 
 4. All that's left to do is draw the orgchart. This is done with the render() function.
 
